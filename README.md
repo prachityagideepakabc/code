@@ -1,11 +1,7 @@
-// to create server
 const http = require ('http'); 
-// to parse url
 const url = require('url'); 
-// to send https requests
-const https = require('https'); 
-
-// for simplicity using has map to store ip details instead of db 
+const https = require('https');
+ 
 var ip_table = new Map();
 
 // create basic server and implement handling different requests
@@ -69,8 +65,8 @@ const app = http.createServer( async (req, res) => {
         res.statusCode = 400;
         res.end("API Endpoint Not Supported");
     }
-});
-//End of create server.
+});//End of create server.
+
 app.listen(4000);
 
 /* function to handle create */
@@ -90,8 +86,7 @@ function handleCreate( ip,res) {
         res.end(error);
     } )
  
-}
-//End of handle create
+}//End of handle create
 //function to start handleshow
 function handleShow(res){
     // set the header and status
@@ -195,12 +190,9 @@ function getGeolocation( ipAddress ) {
                         res.on( 'end', () => {
                             resolve(  JSON.parse(data) ); 
                         });
-                    });
-                    //Endn of http
-            }); 
-            //end of return promise
-}
-//End of getGeolocation
+                    });//Endn of http
+            }); //end of return promise
+}//End of getGeolocation
 function updateTable(entry){
     // get current date to update last update the time
     var time = new Date();
@@ -222,5 +214,4 @@ function extractIPAddress(path){
         return "";
       }
   
-  } 
-  // End of extractIPAddress
+  } // End of extractIPAddress
